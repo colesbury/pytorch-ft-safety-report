@@ -1,6 +1,6 @@
 # `cudaMutexGILState` implicit GIL-based deadlock prevention broken
 
-- **Status:** Open
+- **Status:** Fix pending — [pytorch/pytorch#178833](https://github.com/pytorch/pytorch/pull/178833)
 - **Severity:** Minor
 - **Tier:** Tier 1
 - **Component:** Module

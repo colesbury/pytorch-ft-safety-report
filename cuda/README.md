@@ -17,8 +17,9 @@ C10 CUDA APIs and are called from Python with standard GIL semantics (or explici
 2. **nccl.cpp**: A static `_communicators` map is read/written by `get_communicators`
    without any mutex protection (despite a stale comment claiming otherwise).
 
-3. **Module.cpp**: The `cudaLockMutex`/`cudaUnlockMutex` pattern relies on the GIL
-   for deadlock prevention, which is broken under free-threading.
+3. **Module.cpp**: The `cudaLockMutex`/`cudaUnlockMutex` pattern relied on the GIL
+   for deadlock prevention, which is broken under free-threading. Being removed
+   (no callers) in [#178833](https://github.com/pytorch/pytorch/pull/178833).
 
 The `memory_snapshot.cpp` `CallbackManager` is properly protected by its own mutex.
 The `shared/` directory files, `Event.cpp`, `python_nccl.cpp`, `python_comm.cpp`,
@@ -30,7 +31,7 @@ per-call locals or use proper synchronization.
 | Severity | Component | Issue |
 |----------|-----------|-------|
 | SEVERE | CUDAPluggableAllocator | [`current_custom_allocator` shared_ptr unsynchronized read/write](current-custom-allocator-shared-ptr-unsynchronized-read-write.md) |
-| Minor | Module | [`cudaMutexGILState` implicit GIL-based deadlock prevention broken](cuda-mutex-gil-state-implicit-locking-broken.md) |
+| Minor | Module | [`cudaMutexGILState` implicit GIL-based deadlock prevention broken](cuda-mutex-gil-state-implicit-locking-broken.md) ⏳ [#178833](https://github.com/pytorch/pytorch/pull/178833) |
 
 ## Tier 2 (goal: full multi-thread torch.compile)
 
