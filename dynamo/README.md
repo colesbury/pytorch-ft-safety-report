@@ -10,7 +10,7 @@ Issues in `torch/csrc/dynamo/` affecting free-threaded Python 3.14t.
 | SEVERE | compiled_autograd | [`python_verbose_logger` borrowed reference: use-after-free](python-verbose-logger-borrowed-reference-use-after-free.md) |
 | SEVERE | compiled_autograd | [`the_autograd_compiler` pointer: unsynchronized read vs. write](the-autograd-compiler-pointer-unsynchronized-read-vs-write.md) |
 | SEVERE | eval_frame | [Concurrent access to `cache_entry_list` (std::list) during lookup, ins](concurrent-access-to-cache-entry-list-std-list-during-lookup-insertion-invalidat.md) |
-| SEVERE | guards | [`dict_recursive_tag_watch_callback` calls `disable_recursive_dict_tag_](dict-recursive-tag-watch-callback-calls-disable-recursive-dict-tag-optimization-.md) |
+| SEVERE | guards | [`dict_recursive_tag_watch_callback` calls `disable_recursive_dict_tag_](dict-recursive-tag-watch-callback-calls-disable-recursive-dict-tag-optimization-.md) ⏳ [#178703](https://github.com/pytorch/pytorch/pull/178703) |
 | SEVERE | guards | [`dict_to_guard_managers` concurrent access from watcher callbacks and ](dict-to-guard-managers-concurrent-access-from-watcher-callbacks-and-guard-evalua.md) ⏳ [#178703](https://github.com/pytorch/pytorch/pull/178703) |
 | SEVERE | guards | [`dict_version_map` and `global_dict_version_id` concurrent access from](dict-version-map-and-global-dict-version-id-concurrent-access-from-watcher-callb.md) ⏳ [#178703](https://github.com/pytorch/pytorch/pull/178703) |
 | SEVERE | guards | [`disable_dict_tag_matching_callback` (weakref callback) dereferences `](disable-dict-tag-matching-callback-weakref-callback-dereferences-guardmanager-co.md) |
