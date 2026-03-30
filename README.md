@@ -9,23 +9,27 @@ See [CLAUDE.md](CLAUDE.md) for the audit methodology.
 - **Tier 1 (urgent):** `torch.compile()` runs on the main thread; other threads do data loading. The main risk is dict watcher callbacks firing on data loader threads.
 - **Tier 2 (goal):** Multiple threads call compiled functions concurrently.
 
-## Summary by Component
+## Summary by Component (deep-audited)
 
-| Component | Tier 1 Issues | Tier 2 Issues | Status |
-|-----------|--------------|---------------|--------|
-| [**dynamo**](dynamo/) | 11 | 25 | Active |
-| autograd | ? | 6 high, 17 medium | Broad audit only |
-| torch/csrc (top-level) | ? | 3 high, 18 medium | Broad audit only |
-| utils | ? | 4 high, 8 medium | Broad audit only |
-| cuda | ? | 2 high, 4 medium | Broad audit only |
-| profiler | ? | 0 high, 6 medium | Broad audit only |
+| Component | Tier 1 | Tier 2 | Details |
+|-----------|--------|--------|---------|
+| [**dynamo**](dynamo/) | 8 SEVERE, 1 Significant, 2 Minor | 4 SEVERE, 12 Significant, 9 Minor | Dict watcher races, ExtraState, compiled autograd |
+| [**profiler**](profiler/) | 2 SEVERE, 3 Significant, 1 Minor | — | profiler_kineto shared_ptr, GC callback UAF; 2 SEVERE already fixed |
+| [**autograd**](autograd/) | 1 SEVERE, 1 Significant | 5 Significant, 2 Minor | cpp_function_types_map, lazy-init patterns |
+| [**toplevel**](toplevel/) | 2 Significant | 2 Significant, 2 Minor | DataLoader worker_pids, InternedStringsTable |
+| [**utils**](utils/) | 2 Significant, 1 Minor | 3 SEVERE, 1 Significant | device_lazy_init, python_dispatch maps |
+| [**cuda**](cuda/) | 1 SEVERE | 1 Significant | CUDAPluggableAllocator shared_ptr |
 
-## Components with No Issues
+## Broad audit only (lower quality, not deep-audited)
 
-The following had no free-threading issues: `api/` (C++ frontend), `cpu/`, `functionalization/`, `functorch/`, `instruction_counter/`, `monitor/`, `mps/`, `mtia/`, `multiprocessing/`, `onnx/`, `stable/`.
+| Component | Issues | Details |
+|-----------|--------|---------|
+| [jit](jit/) | 8 medium | Mostly pure C++ graph transforms |
+| [jit_mobile](jit_mobile/) | 4 medium | Mostly pure C++ |
+| [fx](fx/) | 1 high, 2 medium | Lazy-init PyObject* |
+| [export](export/) | 1 medium | upgrader_registry |
+| [tensor](tensor/) | 1 medium | default_backend |
 
-## Reports
+## No issues found
 
-- [dynamo/](dynamo/) — deep audit with tier classification (v2)
-- [CLAUDE.md](CLAUDE.md) — audit methodology and what to look for
-- Individual broad-audit reports (`autograd__part1.md`, etc.) — initial pass, lower quality
+`api/` (C++ frontend), `cpu/`, `distributed/` (already mutex-protected), `functionalization/`, `functorch/`, `inductor/` (low Python coupling), `instruction_counter/`, `lazy/` (already mutex-protected), `monitor/`, `mps/`, `mtia/`, `multiprocessing/`, `onnx/`, `stable/`.
