@@ -30,7 +30,4 @@
   A's `cache` pointer is now dangling. Thread A proceeds to dereference it --
   use-after-free, likely a crash.
 - **Suggested fix:** `clear_cache` must acquire the compiled autograd mutex
-  before clearing. Alternatively, remove `Py_MOD_GIL_NOT_USED` so the GIL
-  serializes all Python C method calls (the GIL alone is sufficient if
-  `compiled_autograd()` also holds the GIL for its entire duration, which it
-  does).
+  before clearing.

@@ -15,7 +15,6 @@ Issues in `torch/csrc/dynamo/` affecting free-threaded Python 3.14t.
 | SEVERE | guards | [`dict_version_map` and `global_dict_version_id` concurrent access from](dict-version-map-and-global-dict-version-id-concurrent-access-from-watcher-callb.md) ⏳ [#178703](https://github.com/pytorch/pytorch/pull/178703) |
 | Minor | guards | [`disable_dict_tag_matching_callback` PyCapsule name data race](disable-dict-tag-matching-callback-weakref-callback-dereferences-guardmanager-co.md) |
 | Significant | compiled_autograd | [`default_dyn_type_int` non-atomic int](default-dyn-type-int-non-atomic-int.md) |
-| Minor | compiled_autograd | [`Py_MOD_GIL_NOT_USED` is the root cause of S1-S4](py-mod-gil-not-used-is-the-root-cause-of-s1-s4.md) |
 | Minor | guards | [`global_dict_version_id` non-atomic increment](global-dict-version-id-non-atomic-increment.md) ⏳ [#178703](https://github.com/pytorch/pytorch/pull/178703) |
 
 ## Tier 2 (goal: full multi-thread torch.compile)

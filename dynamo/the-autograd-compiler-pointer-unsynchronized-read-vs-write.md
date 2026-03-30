@@ -24,5 +24,4 @@
   architectures where pointer writes are atomic, the refcount management is
   unsynchronized: the object can be freed before Thread A's call completes.
 - **Suggested fix:** Have `set_autograd_compiler` acquire the compiled
-  autograd mutex before modifying the pointer. Or remove `Py_MOD_GIL_NOT_USED`
-  so the GIL serializes access.
+  autograd mutex before modifying the pointer.

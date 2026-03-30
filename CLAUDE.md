@@ -63,6 +63,11 @@ matching.
   can touch this map"). That implicit locking no longer works. But the
   mere presence of `PyGILState_Ensure` is not a bug.
 
+- **`Py_MOD_GIL_NOT_USED`.** Never suggest removing this or forcing the
+  GIL back on. PyTorch always wants `Py_MOD_GIL_NOT_USED` (or equivalent).
+  The fix for thread-safety issues is proper internal synchronization, not
+  re-enabling the GIL.
+
 ## Concurrency model
 
 The goal is to make `torch.compile()` fully thread-safe — multiple
