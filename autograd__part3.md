@@ -111,6 +111,14 @@
 - **Description:** On Python < 3.13, `PyDict_GetItemString(locals, "self")` returns a borrowed reference. While there is a subsequent `Py_INCREF(self.get())`, under free-threading the borrowed reference could become dangling between the `PyDict_GetItemString` call and the `Py_INCREF`. The 3.13+ code path uses `PyMapping_GetItemString` which returns a new strong reference, which is correct.
 - **Suggested Fix:** Use `PyDict_GetItemStringRef` (available since Python 3.13, backported via pythoncapi_compat) which returns a strong reference, or wrap the access in `Py_BEGIN_CRITICAL_SECTION`.
 
+## Fixed Issues (not listed above — the original audit missed these)
+
+The two most severe `profiler_python.cpp` issues were not identified by this audit but have been fixed:
+
+- **`PyThreadState_Swap` into running threads' state** — the profiler iterated all threads and swapped into each one's `PyThreadState` to walk frames and install profile hooks. Under free-threading, those threads are actively running. Fixed by #178551 (replaced with `StopTheWorldGuard` + `PyThreadState_GetFrame` + `setprofileAllThreads`).
+
+- **Shared `ValueCache` across threads** — a single `ValueCache` instance was passed by pointer to all `ThreadLocalResults`, meaning profiler callbacks on different threads wrote to the same maps concurrently. Fixed by #178552 (made `ValueCache` per-thread).
+
 ## Summary
 
-The most significant free-threading issues are in `python_cpp_function.cpp` where global mutable containers (`cpp_function_types_map`/`cpp_function_types_set`) and the `functionToPyObject` TOCTOU race on `pyobj()` are exposed to data races. The profiler files have several global mutable state issues (`profiler_state_info_ptr`, `py_gc_callback`, `memory_tracer`) and use of the deprecated `PyGILState_Ensure`/`Release` API. The profiler python code also stores bare borrowed `PyCodeObject*` pointers in statics without holding strong references.
+The most significant free-threading issues are in `python_cpp_function.cpp` where global mutable containers (`cpp_function_types_map`/`cpp_function_types_set`) and the `functionToPyObject` TOCTOU race on `pyobj()` are exposed to data races. The profiler files have several global mutable state issues (`profiler_state_info_ptr`, `py_gc_callback`, `memory_tracer`) and use of `PyGILState_Ensure`/`Release` (which is fine for calling Python C APIs but should not be relied on as an implicit lock for C/C++ data). The profiler python code also stores bare borrowed `PyCodeObject*` pointers in statics without holding strong references.
