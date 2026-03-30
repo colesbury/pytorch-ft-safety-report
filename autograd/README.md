@@ -41,11 +41,6 @@ Full multi-thread torch.compile scenario.
 | Minor | profiler_python.cpp | [thread_local_results_map_ fragile read-only-after-init design](profiler-thread-local-results-map-race.md) |
 | Minor | python_function.cpp | [THPFunction_setup_context lazy-init TOCTOU](setup-context-lazy-init.md) |
 
-## Fixed
-
-- ~~Profiler PyThreadState_Swap into running threads~~ ([PR #178551](https://github.com/pytorch/pytorch/pull/178551))
-- ~~Profiler shared ValueCache across threads~~ ([PR #178552](https://github.com/pytorch/pytorch/pull/178552))
-
 ## Not Reported (by design)
 
 The following were examined and determined to be safe or not worth reporting
@@ -83,3 +78,11 @@ per the audit guidelines:
 
 - **python_variable_indexing.cpp**: No global mutable state; all operations
   are on per-object data.
+
+<details>
+<summary>Fixed (2 issues)</summary>
+
+- ~~Profiler PyThreadState_Swap into running threads~~ ([PR #178551](https://github.com/pytorch/pytorch/pull/178551))
+- ~~Profiler shared ValueCache across threads~~ ([PR #178552](https://github.com/pytorch/pytorch/pull/178552))
+
+</details>

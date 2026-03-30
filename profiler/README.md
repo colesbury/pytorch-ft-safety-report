@@ -10,13 +10,6 @@ Files audited:
 - `torch/csrc/profiler/orchestration/python_tracer.cpp`
 - `torch/csrc/profiler/collection.cpp`
 
-## Fixed
-
-| Severity | Component | Issue | PR |
-|----------|-----------|-------|----|
-| SEVERE | profiler_python | [`PyThreadState_Swap` into running threads during profiler init](pythread-state-swap-into-running-threads.md) | #178551 |
-| SEVERE | profiler_python | [Shared `ValueCache` across threads](shared-valuecache-across-threads.md) | #178552 |
-
 ## Tier 1 (urgent: profiler used during multi-thread workloads)
 
 | Severity | Component | Issue |
@@ -28,3 +21,13 @@ Files audited:
 | Significant | orchestration | [Global function pointers for tracer registration are non-atomic](global-function-pointers-for-tracer-registration.md) |
 | Significant | collection | [Global `std::function` feature flags data race](global-std-function-feature-flags-data-race.md) |
 | Minor | combined_traceback | [`PyList_GetItem` borrowed reference in `gatherForwardTraceback`](pylist-getitem-borrowed-ref-in-gather-forward-traceback.md) |
+
+<details>
+<summary>Fixed (2 issues)</summary>
+
+| Severity | Component | Issue | PR |
+|----------|-----------|-------|----|
+| SEVERE | profiler_python | [`PyThreadState_Swap` into running threads during profiler init](pythread-state-swap-into-running-threads.md) | #178551 |
+| SEVERE | profiler_python | [Shared `ValueCache` across threads](shared-valuecache-across-threads.md) | #178552 |
+
+</details>
