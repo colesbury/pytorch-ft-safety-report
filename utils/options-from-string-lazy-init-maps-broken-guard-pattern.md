@@ -1,6 +1,6 @@
 # `options_from_string` lazy-init maps with broken guard pattern
 
-- **Status:** Open
+- **Status:** Fix pending — [pytorch/pytorch#178919](https://github.com/pytorch/pytorch/pull/178919)
 - **Severity:** SEVERE
 - **Component:** tensor_types
 - **Source reports:** [utils__part5.md](../utils__part5.md)
