@@ -32,7 +32,7 @@ Notable: `Storage.cpp` has already been updated for free-threading, using
 
 | Severity | Component | Issue |
 |----------|-----------|-------|
-| SEVERE | Module.cpp | [`LogAPIUsageOnceFromPython` static `std::unordered_set` concurrent access](log-api-usage-once-static-unordered-set.md) |
+| SEVERE | Module.cpp | [`LogAPIUsageOnceFromPython` static `std::unordered_set` concurrent access](log-api-usage-once-static-unordered-set.md) ⏳ [#178867](https://github.com/pytorch/pytorch/pull/178867) |
 | SEVERE | python_dimname.cpp | [`InternedStringsTable` concurrent hash map access](interned-strings-table-concurrent-access.md) |
 | SEVERE | DataLoader.cpp | [`worker_pids` static `std::map` concurrent access](worker-pids-static-map-concurrent-access.md) |
 | Significant | Generator.cpp | [`THPGenerator_Wrap` TOCTOU on `pyobj()` / `set_pyobj()`](thpgenerator-wrap-toctou-on-pyobj.md) |
