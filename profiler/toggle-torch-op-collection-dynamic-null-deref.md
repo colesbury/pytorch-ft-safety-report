@@ -2,7 +2,6 @@
 
 - **Status:** Open
 - **Severity:** Significant
-- **Tier:** Tier 1
 - **Component:** autograd/profiler_kineto.cpp
 
 - **Shared state:** `profiler_state_info_ptr` -- the same global

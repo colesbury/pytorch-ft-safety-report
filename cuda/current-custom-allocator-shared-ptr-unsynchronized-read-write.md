@@ -2,7 +2,6 @@
 
 - **Status:** Open
 - **Severity:** Minor
-- **Tier:** Tier 1
 - **Component:** CUDAPluggableAllocator
 
 - **Shared state:** `std::shared_ptr<CUDAAllocator> current_custom_allocator` (CUDAPluggableAllocator.cpp line 365), a namespace-scope global.

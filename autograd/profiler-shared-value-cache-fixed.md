@@ -2,7 +2,6 @@
 
 - **Status:** FIXED ([PR #178552](https://github.com/pytorch/pytorch/pull/178552))
 - **Severity:** SEVERE
-- **Tier:** Tier 1
 - **Component:** profiler_python.cpp
 
 The profiler previously used a single shared `ValueCache` instance for all

@@ -26,15 +26,10 @@ The `shared/` directory files, `Event.cpp`, `python_nccl.cpp`, `python_comm.cpp`
 and `GdsFile.cpp` contain no concerning shared mutable state -- they operate on
 per-call locals or use proper synchronization.
 
-## Tier 1 (urgent: single-thread compile + data loaders)
-
-| Severity | Component | Issue |
-|----------|-----------|-------|
-| Minor | CUDAPluggableAllocator | [`current_custom_allocator` shared_ptr unsynchronized read/write](current-custom-allocator-shared-ptr-unsynchronized-read-write.md) |
-| Minor | Module | [`cudaMutexGILState` implicit GIL-based deadlock prevention broken](cuda-mutex-gil-state-implicit-locking-broken.md) ⏳ [#178833](https://github.com/pytorch/pytorch/pull/178833) |
-
-## Tier 2 (goal: full multi-thread torch.compile)
+## Issues
 
 | Severity | Component | Issue |
 |----------|-----------|-------|
 | Significant | nccl | [`_communicators` static map unprotected concurrent access](nccl-communicators-map-unprotected-concurrent-access.md) |
+| Minor | CUDAPluggableAllocator | [`current_custom_allocator` shared_ptr unsynchronized read/write](current-custom-allocator-shared-ptr-unsynchronized-read-write.md) |
+| Minor | Module | [`cudaMutexGILState` implicit GIL-based deadlock prevention broken](cuda-mutex-gil-state-implicit-locking-broken.md) ⏳ [#178833](https://github.com/pytorch/pytorch/pull/178833) |

@@ -2,22 +2,17 @@
 
 Issues in `torch/csrc/utils/` affecting free-threaded Python 3.14t.
 
-## Tier 1 (urgent: single-thread compile + data loaders)
-
-| Severity | Component | Issue |
-|----------|-----------|-------|
-| Significant | device_lazy_init | [`device_lazy_init` TOCTOU race on `is_initialized` arrays](device-lazy-init-toctou-on-is-initialized.md) |
-| Significant | disable_torch_function | [`disabled_torch_function` / `disabled_torch_dispatch` global PyObject* pointers](disabled-torch-function-dispatch-global-pyobject-pointers.md) |
-| Minor | device_lazy_init | [`is_in_bad_fork` and `at_fork_registered` non-atomic bool arrays](is-in-bad-fork-at-fork-registered-non-atomic-bool-arrays.md) |
-
-## Tier 2 (goal: full multi-thread torch.compile)
+## Issues
 
 | Severity | Component | Issue |
 |----------|-----------|-------|
 | SEVERE | python_dispatch | [`python_registrations_` flat_hash_map concurrent read/write](python-registrations-flat-hash-map-concurrent-access.md) |
 | SEVERE | python_dispatch | [`leaked_python_filenames_` vector concurrent push_back invalidates pointers](leaked-python-filenames-vector-concurrent-access.md) |
 | SEVERE | tensor_types | [`options_from_string` lazy-init maps with broken guard pattern](options-from-string-lazy-init-maps-broken-guard-pattern.md) |
+| Significant | device_lazy_init | [`device_lazy_init` TOCTOU race on `is_initialized` arrays](device-lazy-init-toctou-on-is-initialized.md) |
+| Significant | disable_torch_function | [`disabled_torch_function` / `disabled_torch_dispatch` global PyObject* pointers](disabled-torch-function-dispatch-global-pyobject-pointers.md) |
 | Significant | tensor_new | [`static std::string sig` data race in `_validate_sparse_compressed_tensor_args_template`](validate-sparse-compressed-static-string-race.md) |
+| Minor | device_lazy_init | [`is_in_bad_fork` and `at_fork_registered` non-atomic bool arrays](is-in-bad-fork-at-fork-registered-non-atomic-bool-arrays.md) |
 
 ## Not reported (safe patterns)
 

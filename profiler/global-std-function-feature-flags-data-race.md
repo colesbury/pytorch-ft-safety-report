@@ -2,7 +2,6 @@
 
 - **Status:** Open
 - **Severity:** Significant
-- **Tier:** Tier 1
 - **Component:** profiler/collection.cpp
 
 - **Shared state:** Four function-local static `std::function<bool()>` objects:

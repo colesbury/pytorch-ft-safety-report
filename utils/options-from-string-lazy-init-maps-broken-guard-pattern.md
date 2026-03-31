@@ -2,7 +2,6 @@
 
 - **Status:** Open
 - **Severity:** SEVERE
-- **Tier:** Tier 2
 - **Component:** tensor_types
 - **Source reports:** [utils__part5.md](../utils__part5.md)
 

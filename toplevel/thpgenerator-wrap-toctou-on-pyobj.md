@@ -2,7 +2,6 @@
 
 - **Status:** Open
 - **Severity:** Significant
-- **Tier:** Tier 1
 - **Component:** Generator.cpp
 
 - **Shared state:** The `pyobj_` field on `c10::GeneratorImpl` -- a plain

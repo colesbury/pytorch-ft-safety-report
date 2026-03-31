@@ -2,7 +2,6 @@
 
 - **Status:** FIXED ([PR #178551](https://github.com/pytorch/pytorch/pull/178551))
 - **Severity:** SEVERE
-- **Tier:** Tier 1
 - **Component:** profiler_python.cpp
 
 The profiler constructor previously used `PyThreadState_Swap` to switch

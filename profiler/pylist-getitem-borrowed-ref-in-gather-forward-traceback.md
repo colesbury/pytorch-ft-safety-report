@@ -2,7 +2,6 @@
 
 - **Status:** Open
 - **Severity:** Minor
-- **Tier:** Tier 1
 - **Component:** profiler/python/combined_traceback.cpp
 
 - **Shared state:** The Python list object `traceback` returned from

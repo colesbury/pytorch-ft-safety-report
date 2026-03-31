@@ -2,7 +2,6 @@
 
 - **Status:** Open
 - **Severity:** Significant
-- **Tier:** Tier 1
 - **Component:** disable_torch_function
 - **Source reports:** [utils__part1.md](../utils__part1.md)
 

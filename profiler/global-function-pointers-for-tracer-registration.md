@@ -2,7 +2,6 @@
 
 - **Status:** Open
 - **Severity:** Significant
-- **Tier:** Tier 1
 - **Component:** profiler/orchestration/python_tracer.cpp
 
 - **Shared state:** `make_fn` and `memory_make_fn` -- plain function pointers

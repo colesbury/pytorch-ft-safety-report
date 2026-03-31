@@ -2,7 +2,6 @@
 
 - **Status:** Open
 - **Severity:** SEVERE
-- **Tier:** Tier 1
 - **Component:** DataLoader.cpp
 
 - **Shared state:** `worker_pids` -- a `static std::map<int64_t, std::set<pid_t>>`

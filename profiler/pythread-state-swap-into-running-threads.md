@@ -2,7 +2,6 @@
 
 - **Status:** FIXED (#178551)
 - **Severity:** SEVERE
-- **Tier:** Tier 1
 - **Component:** autograd/profiler_python.cpp
 
 - **Shared state:** Other threads' `PyThreadState` and frame stacks.

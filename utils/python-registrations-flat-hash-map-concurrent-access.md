@@ -2,7 +2,6 @@
 
 - **Status:** Open
 - **Severity:** SEVERE
-- **Tier:** Tier 2
 - **Component:** python_dispatch
 - **Source reports:** [utils__part2.md](../utils__part2.md)
 

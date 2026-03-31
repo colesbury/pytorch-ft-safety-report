@@ -2,7 +2,6 @@
 
 - **Status:** Open
 - **Severity:** Minor
-- **Tier:** Tier 2
 - **Component:** Module.cpp
 
 - **Shared state:** `names` -- a `static std::vector<std::string>` inside

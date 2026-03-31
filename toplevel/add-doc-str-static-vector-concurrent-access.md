@@ -2,7 +2,6 @@
 
 - **Status:** Open
 - **Severity:** Minor
-- **Tier:** Tier 2
 - **Component:** Module.cpp
 
 - **Shared state:** `all_docs` -- a `static std::vector<std::string>` inside

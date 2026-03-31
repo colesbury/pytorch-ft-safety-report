@@ -2,7 +2,6 @@
 
 - **Status:** Fix pending — [pytorch/pytorch#178833](https://github.com/pytorch/pytorch/pull/178833)
 - **Severity:** Minor
-- **Tier:** Tier 1
 - **Component:** Module
 
 - **Shared state:** `static PyGILState_STATE cudaMutexGILState` (Module.cpp line 495), and the invariant that the GIL is held while the CUDA free mutex is held.

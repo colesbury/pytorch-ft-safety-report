@@ -20,22 +20,13 @@ Key Python-facing files include:
 - **profiler_python.cpp** -- Python call profiler; had two major bugs fixed
   by #178551 and #178552; some residual issues remain.
 
-## Tier 1 (urgent)
-
-Single-thread compile, multi-thread data loading scenario.
+## Issues
 
 | Severity | File | Issue |
 |---|---|---|
-| Minor | python_cpp_function.cpp | [cpp_function_types_map/set unprotected concurrent access](cpp-function-types-map-race.md) |
 | Significant | profiler_python.cpp | [py_gc_callback global pointer race](profiler-gc-callback-global.md) |
-
-## Tier 2 (goal)
-
-Full multi-thread torch.compile scenario.
-
-| Severity | File | Issue |
-|---|---|---|
 | Significant | python_cpp_function.cpp, function.h | [functionToPyObject TOCTOU race on Node::pyobj_](function-to-pyobject-pyobj-race.md) |
+| Minor | python_cpp_function.cpp | [cpp_function_types_map/set unprotected concurrent access](cpp-function-types-map-race.md) |
 | Minor | profiler_python.cpp | [getCode<> stores borrowed PyCodeObject* references](profiler-getcode-borrowed-ref.md) |
 | Minor | profiler_python.cpp | [CodeLocation stores borrowed const char* from code objects](profiler-code-location-borrowed-ptrs.md) |
 | Minor | profiler_python.cpp | [thread_local_results_map_ fragile read-only-after-init design](profiler-thread-local-results-map-race.md) |

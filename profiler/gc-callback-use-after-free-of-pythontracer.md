@@ -2,7 +2,6 @@
 
 - **Status:** Open
 - **Severity:** SEVERE
-- **Tier:** Tier 1
 - **Component:** autograd/profiler_python.cpp
 
 - **Shared state:** The `PythonTracer*` pointer captured inside a `PyCapsule`

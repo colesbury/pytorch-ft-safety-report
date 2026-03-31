@@ -2,7 +2,6 @@
 
 - **Status:** Open
 - **Severity:** Significant
-- **Tier:** Tier 2
 - **Component:** tensor_new
 - **Source reports:** [utils__part4.md](../utils__part4.md)
 

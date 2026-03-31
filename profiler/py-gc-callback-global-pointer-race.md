@@ -2,7 +2,6 @@
 
 - **Status:** Open
 - **Severity:** Significant
-- **Tier:** Tier 1
 - **Component:** autograd/profiler_python.cpp
 
 - **Shared state:** `py_gc_callback` -- a file-scope `static PyObject*`

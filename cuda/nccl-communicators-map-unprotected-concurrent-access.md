@@ -2,7 +2,6 @@
 
 - **Status:** Open
 - **Severity:** Significant
-- **Tier:** Tier 2
 - **Component:** nccl
 
 - **Shared state:** `static std::unordered_map<device_list, NcclCommList, ...> _communicators` (nccl.cpp line 292).

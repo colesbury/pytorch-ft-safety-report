@@ -2,7 +2,6 @@
 
 - **Status:** Open
 - **Severity:** SEVERE
-- **Tier:** Tier 1
 - **Component:** python_dimname.cpp
 
 - **Shared state:** `kPyInternedStringToDimname` -- a static

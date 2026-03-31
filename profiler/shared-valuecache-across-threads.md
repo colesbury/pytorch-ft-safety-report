@@ -2,7 +2,6 @@
 
 - **Status:** FIXED (#178552)
 - **Severity:** SEVERE
-- **Tier:** Tier 1
 - **Component:** autograd/profiler_python.cpp
 
 - **Shared state:** A single `ValueCache` instance containing multiple

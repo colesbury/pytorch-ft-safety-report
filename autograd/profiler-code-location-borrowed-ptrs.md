@@ -2,7 +2,6 @@
 
 - **Status:** Open
 - **Severity:** Minor
-- **Tier:** Tier 2
 - **Component:** profiler_python.cpp
 
 ## Shared state

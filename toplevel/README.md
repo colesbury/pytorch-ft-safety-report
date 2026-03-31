@@ -28,7 +28,7 @@ Notable: `Storage.cpp` has already been updated for free-threading, using
 - Stream.cpp, DynamicTypes.cpp, Device.cpp, Dtype.cpp, Event.cpp
 - utils.cpp, serialization.cpp
 
-## Tier 1 (urgent: single-thread compile + data loaders)
+## Issues
 
 | Severity | Component | Issue |
 |----------|-----------|-------|
@@ -36,11 +36,6 @@ Notable: `Storage.cpp` has already been updated for free-threading, using
 | SEVERE | python_dimname.cpp | [`InternedStringsTable` concurrent hash map access](interned-strings-table-concurrent-access.md) |
 | SEVERE | DataLoader.cpp | [`worker_pids` static `std::map` concurrent access](worker-pids-static-map-concurrent-access.md) |
 | Significant | Generator.cpp | [`THPGenerator_Wrap` TOCTOU on `pyobj()` / `set_pyobj()`](thpgenerator-wrap-toctou-on-pyobj.md) |
-
-## Tier 2 (goal: full multi-thread torch.compile)
-
-| Severity | Component | Issue |
-|----------|-----------|-------|
 | Minor | Module.cpp | [`THPModule_addDocStr` static `all_docs` vector concurrent access](add-doc-str-static-vector-concurrent-access.md) |
 | Minor | Module.cpp | [`THPModule_initNames` static `names` vector concurrent access](init-names-static-vector-concurrent-access.md) |
 

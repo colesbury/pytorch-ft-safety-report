@@ -2,7 +2,6 @@
 
 - **Status:** Open
 - **Severity:** Minor
-- **Tier:** Tier 1
 - **Component:** python_cpp_function.cpp
 
 ## Shared state

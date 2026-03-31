@@ -10,7 +10,7 @@ Files audited:
 - `torch/csrc/profiler/orchestration/python_tracer.cpp`
 - `torch/csrc/profiler/collection.cpp`
 
-## Tier 1 (urgent: profiler used during multi-thread workloads)
+## Issues
 
 | Severity | Component | Issue |
 |----------|-----------|-------|

@@ -2,7 +2,6 @@
 
 - **Status:** Open
 - **Severity:** SEVERE
-- **Tier:** Tier 1
 - **Component:** Module.cpp
 
 - **Shared state:** `seen` -- a `static std::unordered_set<std::string>` inside
