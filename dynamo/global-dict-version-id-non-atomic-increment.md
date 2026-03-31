@@ -1,6 +1,6 @@
 # `global_dict_version_id` non-atomic increment
 
-- **Status:** FIXED — [pytorch/pytorch#178703](https://github.com/pytorch/pytorch/pull/178703)
+- **Status:** Open
 - **Severity:** Minor
 - **Tier:** Tier 1
 - **Component:** guards

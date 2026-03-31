@@ -1,6 +1,6 @@
 # `dict_recursive_tag_watch_callback` calls `disable_recursive_dict_tag_optimization` which mutates GuardManager state without the root lock
 
-- **Status:** FIXED — [pytorch/pytorch#178703](https://github.com/pytorch/pytorch/pull/178703)
+- **Status:** Open
 - **Severity:** SEVERE
 - **Tier:** Tier 1
 - **Component:** guards

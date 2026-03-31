@@ -19,7 +19,7 @@ Dynamo uses a tiered concurrency model (see [dynamo/](dynamo/)):
 | [**profiler**](profiler/) | 2 SEVERE, 4 Significant, 1 Minor | profiler_kineto shared_ptr, GC callback UAF; 2 SEVERE already fixed |
 | [**autograd**](autograd/) | 2 Significant, 5 Minor | functionToPyObject TOCTOU, lazy-init patterns; 2 already fixed |
 | [**toplevel**](toplevel/) | 3 SEVERE, 1 Significant, 2 Minor | DataLoader worker_pids, InternedStringsTable |
-| [**utils**](utils/) | 3 SEVERE, 3 Significant, 1 Minor | device_lazy_init, python_dispatch maps |
+| [**utils**](utils/) | 3 SEVERE, 2 Significant, 1 Minor | device_lazy_init, python_dispatch maps |
 | [**cuda**](cuda/) | 1 Significant, 2 Minor | nccl communicators, CUDAPluggableAllocator shared_ptr |
 | [**distributed**](distributed/) | 8 SEVERE, 14 Significant, 16 Minor | barrier/groupRanks static races, SymmetricMemory missing mutex, PythonRpcHandler UAF, RRef dangling `this` |
 

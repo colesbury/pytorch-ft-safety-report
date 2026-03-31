@@ -1,6 +1,6 @@
 # `device_lazy_init` TOCTOU race on `is_initialized` arrays
 
-- **Status:** Open
+- **Status:** Fix pending — [pytorch/pytorch#178911](https://github.com/pytorch/pytorch/pull/178911)
 - **Severity:** Significant
 - **Component:** device_lazy_init
 - **Source reports:** [utils__part1.md](../utils__part1.md)

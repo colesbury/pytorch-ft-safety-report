@@ -26,6 +26,7 @@
   This is undefined behavior -- the control block's reference count can be
   corrupted, or the child thread can read a half-written pointer, leading to
   a crash or use-after-free.
+- **Note:** This is a pre-existing bug, not specific to free-threading. The child thread readers (e.g., `syncProfilerStateFromMainThread` in `ParallelGraphExecutor.cpp`) run in C++ thread pools without holding the GIL.
 - **Suggested fix:** Use `std::atomic<std::shared_ptr<ProfilerStateInfo>>`
   (C++20) or replace with a `std::mutex`-protected access pattern. For the
   simple null check in `isProfilerEnabledInMainThread`, an `atomic_load` would

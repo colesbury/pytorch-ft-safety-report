@@ -9,14 +9,17 @@ Issues in `torch/csrc/utils/` affecting free-threaded Python 3.14t.
 | SEVERE | python_dispatch | [`python_registrations_` flat_hash_map concurrent read/write](python-registrations-flat-hash-map-concurrent-access.md) ⏳ [#178898](https://github.com/pytorch/pytorch/pull/178898) |
 | SEVERE | python_dispatch | [`leaked_python_filenames_` vector concurrent push_back invalidates pointers](leaked-python-filenames-vector-concurrent-access.md) ⏳ [#178898](https://github.com/pytorch/pytorch/pull/178898) |
 | SEVERE | tensor_types | [`options_from_string` lazy-init maps with broken guard pattern](options-from-string-lazy-init-maps-broken-guard-pattern.md) |
-| Significant | device_lazy_init | [`device_lazy_init` TOCTOU race on `is_initialized` arrays](device-lazy-init-toctou-on-is-initialized.md) |
-| Significant | disable_torch_function | [`disabled_torch_function` / `disabled_torch_dispatch` global PyObject* pointers](disabled-torch-function-dispatch-global-pyobject-pointers.md) |
+| Significant | device_lazy_init | [`device_lazy_init` TOCTOU race on `is_initialized` arrays](device-lazy-init-toctou-on-is-initialized.md) ⏳ [#178911](https://github.com/pytorch/pytorch/pull/178911) |
 | Significant | tensor_new | [`static std::string sig` data race in `_validate_sparse_compressed_tensor_args_template`](validate-sparse-compressed-static-string-race.md) |
-| Minor | device_lazy_init | [`is_in_bad_fork` and `at_fork_registered` non-atomic bool arrays](is-in-bad-fork-at-fork-registered-non-atomic-bool-arrays.md) |
+| Minor | device_lazy_init | [`is_in_bad_fork` and `at_fork_registered` non-atomic bool arrays](is-in-bad-fork-at-fork-registered-non-atomic-bool-arrays.md) ⏳ [#178911](https://github.com/pytorch/pytorch/pull/178911) |
 
 ## Not reported (safe patterns)
 
 The following were reviewed and determined to be safe:
+
+- **`disabled_torch_function` / `disabled_torch_dispatch`**
+  (disable_torch_function.cpp): Write-once-during-init globals, set under
+  the import lock. Read-only after init.
 
 - **`static PythonArgParser` instances** (tensor_new.cpp, python_arg_parser.cpp): `PythonArgParser` is immutable after construction. `raw_parse()` and `check_deprecated()` only read `signatures_`. The `ParsedArgs` buffer is per-call stack-local. C++11 magic statics guarantee thread-safe one-time construction. Safe for concurrent use.
 
