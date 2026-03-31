@@ -26,7 +26,7 @@ Single-thread compile, multi-thread data loading scenario.
 
 | Severity | File | Issue |
 |---|---|---|
-| SEVERE | python_cpp_function.cpp | [cpp_function_types_map/set unprotected concurrent access](cpp-function-types-map-race.md) |
+| Minor | python_cpp_function.cpp | [cpp_function_types_map/set unprotected concurrent access](cpp-function-types-map-race.md) |
 | Significant | profiler_python.cpp | [py_gc_callback global pointer race](profiler-gc-callback-global.md) |
 
 ## Tier 2 (goal)

@@ -1,7 +1,7 @@
 # `current_custom_allocator` shared_ptr unsynchronized read/write
 
 - **Status:** Open
-- **Severity:** SEVERE
+- **Severity:** Minor
 - **Tier:** Tier 1
 - **Component:** CUDAPluggableAllocator
 

@@ -1,7 +1,7 @@
 # cpp_function_types_map / cpp_function_types_set unprotected concurrent access
 
 - **Status:** Open
-- **Severity:** SEVERE
+- **Severity:** Minor
 - **Tier:** Tier 1
 - **Component:** python_cpp_function.cpp
 

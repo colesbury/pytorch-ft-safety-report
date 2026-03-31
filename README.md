@@ -15,10 +15,10 @@ See [CLAUDE.md](CLAUDE.md) for the audit methodology.
 |-----------|--------|--------|---------|
 | [**dynamo**](dynamo/) | 8 SEVERE, 1 Significant, 2 Minor | 4 SEVERE, 12 Significant, 9 Minor | Dict watcher races, ExtraState, compiled autograd |
 | [**profiler**](profiler/) | 2 SEVERE, 3 Significant, 1 Minor | — | profiler_kineto shared_ptr, GC callback UAF; 2 SEVERE already fixed |
-| [**autograd**](autograd/) | 1 SEVERE, 1 Significant | 5 Significant, 2 Minor | cpp_function_types_map, lazy-init patterns |
+| [**autograd**](autograd/) | 1 Significant, 1 Minor | 5 Significant, 2 Minor | cpp_function_types_map, lazy-init patterns |
 | [**toplevel**](toplevel/) | 2 Significant | 2 Significant, 2 Minor | DataLoader worker_pids, InternedStringsTable |
 | [**utils**](utils/) | 2 Significant, 1 Minor | 3 SEVERE, 1 Significant | device_lazy_init, python_dispatch maps |
-| [**cuda**](cuda/) | 1 SEVERE | 1 Significant | CUDAPluggableAllocator shared_ptr |
+| [**cuda**](cuda/) | 1 Minor | 1 Significant | CUDAPluggableAllocator shared_ptr |
 
 ## Broad audit only (lower quality, not deep-audited)
 
