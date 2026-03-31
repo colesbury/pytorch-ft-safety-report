@@ -1,6 +1,6 @@
 # `static std::string sig` data race in `_validate_sparse_compressed_tensor_args_template`
 
-- **Status:** Open
+- **Status:** Fix pending — [pytorch/pytorch#178920](https://github.com/pytorch/pytorch/pull/178920)
 - **Severity:** Significant
 - **Component:** tensor_new
 - **Source reports:** [utils__part4.md](../utils__part4.md)
