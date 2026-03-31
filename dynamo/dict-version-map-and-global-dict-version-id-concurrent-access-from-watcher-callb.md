@@ -1,6 +1,6 @@
 # `dict_version_map` and `global_dict_version_id` concurrent access from watcher callbacks
 
-- **Status:** Fix pending — [pytorch/pytorch#178703](https://github.com/pytorch/pytorch/pull/178703)
+- **Status:** FIXED — [pytorch/pytorch#178703](https://github.com/pytorch/pytorch/pull/178703)
 - **Severity:** SEVERE
 - **Tier:** Tier 1
 - **Component:** guards

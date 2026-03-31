@@ -1,6 +1,6 @@
 # `leaked_python_filenames_` vector concurrent push_back invalidates pointers
 
-- **Status:** Open
+- **Status:** Fix pending — [pytorch/pytorch#178898](https://github.com/pytorch/pytorch/pull/178898)
 - **Severity:** SEVERE
 - **Component:** python_dispatch
 - **Source reports:** [utils__part2.md](../utils__part2.md)
