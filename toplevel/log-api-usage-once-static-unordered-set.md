@@ -1,6 +1,6 @@
 # `LogAPIUsageOnceFromPython` static `std::unordered_set` concurrent access
 
-- **Status:** Fix pending — [pytorch/pytorch#178867](https://github.com/pytorch/pytorch/pull/178867)
+- **Status:** FIXED — [pytorch/pytorch#178867](https://github.com/pytorch/pytorch/pull/178867)
 - **Severity:** SEVERE
 - **Component:** Module.cpp
 
