@@ -25,7 +25,7 @@ these shared components. The deduplicated totals are below.
 
 | # | Component | Issue | File | Status |
 |---|-----------|-------|------|--------|
-| 1 | c10d | `ProcessGroup::barrier()` static tensor reassigned on every call | ProcessGroup.hpp:796 | ⏳ [#178896](https://github.com/pytorch/pytorch/pull/178896) |
+| 1 | c10d | `ProcessGroup::barrier()` static tensor reassigned on every call | ProcessGroup.hpp:796 | ✅ [#178896](https://github.com/pytorch/pytorch/pull/178896) |
 | 2 | c10d | `groupRanks()` static vector written by `std::iota` on every call | ProcessGroupNCCL.cpp:2686, ProcessGroupGloo.cpp:728 |
 | 3 | SymmetricMemory | `MemPoolAllocatorMap` has no mutex (unlike `AllocatorMap` above it) | SymmetricMemory.cpp |
 | 4 | NVSHMEM | `get_rank_to_global_rank()` returns reference after releasing lock | NVSHMEMSymmetricMemory.cpp |

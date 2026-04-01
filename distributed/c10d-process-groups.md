@@ -44,7 +44,7 @@ threads call ProcessGroup methods concurrently and hit unprotected shared state?
 
 ### 1. `ProcessGroup::barrier()` races on static `at::Tensor`
 
-- **Status:** Fix pending — [pytorch/pytorch#178896](https://github.com/pytorch/pytorch/pull/178896)
+- **Status:** FIXED — [pytorch/pytorch#178896](https://github.com/pytorch/pytorch/pull/178896)
 - **Shared state:** `static at::Tensor tensor` in `ProcessGroup::barrier()`
   (`ProcessGroup.hpp:796`). This is a function-local static that is
   **reassigned on every call** -- it is not a write-once variable.
