@@ -16,12 +16,12 @@ Dynamo uses a tiered concurrency model (see [dynamo/](dynamo/)):
 | Component | Issues | Details |
 |-----------|--------|---------|
 | [**dynamo**](dynamo/) | 8 SEVERE, 14 Significant, 10 Minor | Dict watcher races, ExtraState, compiled autograd; 3 fixed |
-| [**profiler**](profiler/) | 2 SEVERE, 4 Significant, 1 Minor | profiler_kineto shared_ptr, GC callback UAF; 2 SEVERE already fixed |
-| [**autograd**](autograd/) | 2 Significant, 5 Minor | functionToPyObject TOCTOU, lazy-init patterns; 2 already fixed |
+| [**profiler**](profiler/) | 2 SEVERE, 4 Significant, 4 Minor | profiler_kineto shared_ptr, GC callback UAF; 2 SEVERE already fixed |
+| [**autograd**](autograd/) | 1 Significant, 2 Minor | functionToPyObject TOCTOU, lazy-init patterns |
 | [**toplevel**](toplevel/) | 3 SEVERE, 1 Significant, 2 Minor | DataLoader worker_pids, InternedStringsTable |
 | [**utils**](utils/) | 3 SEVERE, 2 Significant, 1 Minor | device_lazy_init, python_dispatch maps |
 | [**cuda**](cuda/) | 1 Significant, 2 Minor | nccl communicators, CUDAPluggableAllocator shared_ptr |
-| [**distributed**](distributed/) | 8 SEVERE, 14 Significant, 16 Minor | barrier/groupRanks static races, SymmetricMemory missing mutex, PythonRpcHandler UAF, RRef dangling `this` |
+| [**distributed**](distributed/) | 8 SEVERE, 14 Significant, 18 Minor | barrier/groupRanks static races, SymmetricMemory missing mutex, PythonRpcHandler UAF, RRef dangling `this` |
 
 ## Broad audit only (lower quality, not deep-audited)
 

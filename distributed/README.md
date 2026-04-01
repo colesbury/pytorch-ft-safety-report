@@ -11,7 +11,7 @@ distributed autograd.
 | [c10d-process-groups.md](c10d-process-groups.md) | ProcessGroupNCCL, Gloo, MPI, UCC, Wrapper | 2 | 5 | 5 |
 | [c10d-stores-and-infra.md](c10d-stores-and-infra.md) | TCPStore, FileStore, logger, NCCLUtils, control plane | 0 | 3 | 3 |
 | [c10d-bindings-and-ops.md](c10d-bindings-and-ops.md) | init.cpp, Ops, Functional, reducer, SymmetricMemory | 3 | 3 | 2 |
-| [rpc-core.md](rpc-core.md) | tensorpipe_agent, rref_context, rref_impl, PythonRpcHandler | 3 | 5 | 4 |
+| [rpc-core.md](rpc-core.md) | tensorpipe_agent, rref_context, rref_impl, PythonRpcHandler | 3 | 5 | 6 |
 | [rpc-bindings-and-utils.md](rpc-bindings-and-utils.md) | rpc/init.cpp, python_functions, request callbacks, profiler | 2 | 2 | 3 |
 | [autograd.md](autograd.md) | dist_engine, context/container, send/recv backward | 2 | 2 | 3 |
 
@@ -34,7 +34,7 @@ these shared components. The deduplicated totals are below.
 | 7 | RPC | `RRef::handleError` static map captures first caller's `this` -- dangling pointer | rref_impl.cpp |
 | 8 | Autograd | `addOutstandingRpc` callback captures raw `this` -- use-after-free after context release | context.cpp:133 |
 
-### Significant (12 unique issues -- incorrect behavior)
+### Significant (14 unique issues -- incorrect behavior)
 
 | # | Component | Issue |
 |---|-----------|-------|
