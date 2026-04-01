@@ -11,11 +11,8 @@ Issues in `torch/csrc/dynamo/` affecting free-threaded Python 3.14t.
 | SEVERE | compiled_autograd | [`the_autograd_compiler` pointer: unsynchronized read vs. write](the-autograd-compiler-pointer-unsynchronized-read-vs-write.md) |
 | SEVERE | eval_frame | [Concurrent access to `cache_entry_list` (std::list) during lookup, ins](concurrent-access-to-cache-entry-list-std-list-during-lookup-insertion-invalidat.md) |
 | SEVERE | guards | [`dict_recursive_tag_watch_callback` calls `disable_recursive_dict_tag_](dict-recursive-tag-watch-callback-calls-disable-recursive-dict-tag-optimization-.md) |
-| SEVERE | guards | [`dict_to_guard_managers` concurrent access from watcher callbacks and ](dict-to-guard-managers-concurrent-access-from-watcher-callbacks-and-guard-evalua.md) |
-| SEVERE | guards | [`dict_version_map` and `global_dict_version_id` concurrent access from](dict-version-map-and-global-dict-version-id-concurrent-access-from-watcher-callb.md) |
 | Significant | compiled_autograd | [`default_dyn_type_int` non-atomic int](default-dyn-type-int-non-atomic-int.md) |
 | Minor | guards | [`disable_dict_tag_matching_callback` PyCapsule name data race](disable-dict-tag-matching-callback-weakref-callback-dereferences-guardmanager-co.md) |
-| Minor | guards | [`global_dict_version_id` non-atomic increment](global-dict-version-id-non-atomic-increment.md) |
 
 ## Tier 2 (goal: full multi-thread torch.compile)
 
@@ -50,4 +47,15 @@ Issues in `torch/csrc/dynamo/` affecting free-threaded Python 3.14t.
 ## Unclassified
 
 - [`CacheNode` destructor leak on interpreter shutdown](cachenode-destructor-leak-on-interpreter-shutdown.md)
+
+<details>
+<summary>Fixed (3 issues)</summary>
+
+| Severity | Component | Issue | PR |
+|----------|-----------|-------|----|
+| SEVERE | guards | [`dict_to_guard_managers` concurrent access from watcher callbacks and guard evaluation](dict-to-guard-managers-concurrent-access-from-watcher-callbacks-and-guard-evalua.md) | [#178703](https://github.com/pytorch/pytorch/pull/178703) |
+| SEVERE | guards | [`dict_version_map` and `global_dict_version_id` concurrent access from watcher callbacks](dict-version-map-and-global-dict-version-id-concurrent-access-from-watcher-callb.md) | [#178703](https://github.com/pytorch/pytorch/pull/178703) |
+| Minor | guards | [`global_dict_version_id` non-atomic increment](global-dict-version-id-non-atomic-increment.md) | [#178703](https://github.com/pytorch/pytorch/pull/178703) |
+
+</details>
 

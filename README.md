@@ -15,7 +15,7 @@ Dynamo uses a tiered concurrency model (see [dynamo/](dynamo/)):
 
 | Component | Issues | Details |
 |-----------|--------|---------|
-| [**dynamo**](dynamo/) | 11 SEVERE, 13 Significant, 11 Minor | Dict watcher races, ExtraState, compiled autograd |
+| [**dynamo**](dynamo/) | 9 SEVERE, 13 Significant, 10 Minor | Dict watcher races, ExtraState, compiled autograd; 3 fixed |
 | [**profiler**](profiler/) | 2 SEVERE, 4 Significant, 1 Minor | profiler_kineto shared_ptr, GC callback UAF; 2 SEVERE already fixed |
 | [**autograd**](autograd/) | 2 Significant, 5 Minor | functionToPyObject TOCTOU, lazy-init patterns; 2 already fixed |
 | [**toplevel**](toplevel/) | 3 SEVERE, 1 Significant, 2 Minor | DataLoader worker_pids, InternedStringsTable |

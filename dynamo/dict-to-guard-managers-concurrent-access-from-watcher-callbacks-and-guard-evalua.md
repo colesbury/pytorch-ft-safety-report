@@ -1,6 +1,6 @@
 # `dict_to_guard_managers` concurrent access from watcher callbacks and guard evaluation/destruction
 
-- **Status:** Open
+- **Status:** FIXED ([#178703](https://github.com/pytorch/pytorch/pull/178703))
 - **Severity:** SEVERE
 - **Tier:** Tier 1
 - **Component:** guards
