@@ -24,12 +24,8 @@ Key Python-facing files include:
 
 | Severity | File | Issue |
 |---|---|---|
-| Significant | profiler_python.cpp | [py_gc_callback global pointer race](profiler-gc-callback-global.md) |
 | Significant | python_cpp_function.cpp, function.h | [functionToPyObject TOCTOU race on Node::pyobj_](function-to-pyobject-pyobj-race.md) |
 | Minor | python_cpp_function.cpp | [cpp_function_types_map/set unprotected concurrent access](cpp-function-types-map-race.md) |
-| Minor | profiler_python.cpp | [getCode<> stores borrowed PyCodeObject* references](profiler-getcode-borrowed-ref.md) |
-| Minor | profiler_python.cpp | [CodeLocation stores borrowed const char* from code objects](profiler-code-location-borrowed-ptrs.md) |
-| Minor | profiler_python.cpp | [thread_local_results_map_ fragile read-only-after-init design](profiler-thread-local-results-map-race.md) |
 | Minor | python_function.cpp | [THPFunction_setup_context lazy-init TOCTOU](setup-context-lazy-init.md) |
 
 ## Not Reported (by design)
@@ -70,10 +66,4 @@ per the audit guidelines:
 - **python_variable_indexing.cpp**: No global mutable state; all operations
   are on per-object data.
 
-<details>
-<summary>Fixed (2 issues)</summary>
-
-- ~~Profiler PyThreadState_Swap into running threads~~ ([PR #178551](https://github.com/pytorch/pytorch/pull/178551))
-- ~~Profiler shared ValueCache across threads~~ ([PR #178552](https://github.com/pytorch/pytorch/pull/178552))
-
-</details>
+Note: profiler_python.cpp issues are tracked in [profiler/README.md](../profiler/README.md).

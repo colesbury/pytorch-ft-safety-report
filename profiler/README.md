@@ -20,6 +20,9 @@ Files audited:
 | Significant | profiler_python | [`py_gc_callback` global pointer race between registration and GC](py-gc-callback-global-pointer-race.md) |
 | Significant | orchestration | [Global function pointers for tracer registration are non-atomic](global-function-pointers-for-tracer-registration.md) |
 | Significant | collection | [Global `std::function` feature flags data race](global-std-function-feature-flags-data-race.md) |
+| Minor | profiler_python | [`getCode<>` stores borrowed `PyCodeObject*` references](profiler-getcode-borrowed-ref.md) |
+| Minor | profiler_python | [`CodeLocation` stores borrowed `const char*` from code objects](profiler-code-location-borrowed-ptrs.md) |
+| Minor | profiler_python | [`thread_local_results_map_` fragile read-only-after-init design](profiler-thread-local-results-map-race.md) |
 | Minor | combined_traceback | [`PyList_GetItem` borrowed reference in `gatherForwardTraceback`](pylist-getitem-borrowed-ref-in-gather-forward-traceback.md) |
 
 <details>
