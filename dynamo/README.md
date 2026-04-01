@@ -10,7 +10,7 @@ Issues in `torch/csrc/dynamo/` affecting free-threaded Python 3.14t.
 | SEVERE | compiled_autograd | [`python_verbose_logger` borrowed reference: use-after-free](python-verbose-logger-borrowed-reference-use-after-free.md) |
 | SEVERE | compiled_autograd | [`the_autograd_compiler` pointer: unsynchronized read vs. write](the-autograd-compiler-pointer-unsynchronized-read-vs-write.md) |
 | SEVERE | eval_frame | [Concurrent access to `cache_entry_list` (std::list) during lookup, ins](concurrent-access-to-cache-entry-list-std-list-during-lookup-insertion-invalidat.md) |
-| SEVERE | guards | [`dict_recursive_tag_watch_callback` calls `disable_recursive_dict_tag_](dict-recursive-tag-watch-callback-calls-disable-recursive-dict-tag-optimization-.md) |
+| Significant | guards | [`dict_recursive_tag_watch_callback` races with guard eval on per-Guard](dict-recursive-tag-watch-callback-calls-disable-recursive-dict-tag-optimization-.md) |
 | Significant | compiled_autograd | [`default_dyn_type_int` non-atomic int](default-dyn-type-int-non-atomic-int.md) |
 | Minor | guards | [`disable_dict_tag_matching_callback` PyCapsule name data race](disable-dict-tag-matching-callback-weakref-callback-dereferences-guardmanager-co.md) |
 
