@@ -50,10 +50,16 @@ thread list) concurrently with a new Python thread being created/destroyed
 
 ## Assessment
 
-This is currently safe by construction (write under STW, then read-only),
-but the design is fragile. Marking as SEVERE because if anyone adds a path
-that modifies the map after construction, the existing unsynchronized reads
-would immediately become a data race.
+The map lookups are currently safe by construction (write under STW, then
+read-only). However, the `ThreadLocalResults` objects that the map points to
+are subject to a separate teardown race: the main thread destroys them (via
+`~PythonTracer` destroying the `thread_local_results_` deque) while worker
+threads are still accessing them through pointers obtained from this map. That
+race is confirmed by TSAN and tracked in
+[pyProfileFn teardown race](pyprofilefn-teardown-race-with-worker-threads.md).
+
+The map itself is fragile: if anyone adds a path that modifies it after
+construction, the existing unsynchronized reads would become a data race.
 
 ## Suggested fix
 

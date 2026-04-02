@@ -20,3 +20,9 @@
   causing crashes.
 - **Fix:** `ValueCache` is now a member of `ThreadLocalResults` (per-thread),
   so each thread writes to its own cache with no sharing.
+- **Note:** This fix eliminates concurrent writes *between* worker threads,
+  but does not fix the teardown race where the main thread destroys
+  `ThreadLocalResults` (which now owns `ValueCache`) while a worker thread is
+  still writing to it from `pyProfileFn`. That race is tracked separately in
+  [pyProfileFn teardown race](pyprofilefn-teardown-race-with-worker-threads.md)
+  and is confirmed by TSAN.

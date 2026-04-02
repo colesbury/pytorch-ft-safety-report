@@ -26,7 +26,14 @@
   race). Thread B then dereferences the `PythonTracer*` from the PyCapsule,
   which points to a destroyed object. This is a use-after-free on the
   `PythonTracer` and its `queue_` member.
+- **Related:** The more common variant of this race — `pyProfileFn` callbacks
+  (not GC callbacks) racing with teardown — is confirmed by TSAN. See
+  [pyProfileFn teardown race](pyprofilefn-teardown-race-with-worker-threads.md).
+  Both share the same root cause: `PythonTracer::stop()` does not wait for
+  in-flight callbacks before the main thread reads/destroys profiler state.
 - **Suggested fix:** Use a ref-counted weak pointer or an atomic flag inside the
   PyCapsule to signal invalidation. Alternatively, ensure the PyCapsule destructor
   is the mechanism that prevents stale access (e.g., set the capsule's pointer
-  to nullptr under a lock, and check in the callback).
+  to nullptr under a lock, and check in the callback). A comprehensive fix that
+  also addresses the `pyProfileFn` variant would be to ensure all callbacks have
+  drained before teardown proceeds (e.g., stop-the-world or a barrier).

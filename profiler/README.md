@@ -14,6 +14,7 @@ Files audited:
 
 | Severity | Component | Issue |
 |----------|-----------|-------|
+| SEVERE | profiler_python, profiler_kineto, collection | [`pyProfileFn` teardown race: worker callbacks race with `disableProfiler`](pyprofilefn-teardown-race-with-worker-threads.md) |
 | SEVERE | profiler_kineto | [`profiler_state_info_ptr` (shared_ptr) data race across threads](profiler-state-info-ptr-shared-ptr-data-race.md) |
 | SEVERE | profiler_python | [GC callback use-after-free of `PythonTracer` instance](gc-callback-use-after-free-of-pythontracer.md) |
 | Significant | profiler_kineto | [`toggleTorchOpCollectionDynamic` dereferences `profiler_state_info_ptr` wit](toggle-torch-op-collection-dynamic-null-deref.md) |
