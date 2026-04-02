@@ -1,6 +1,6 @@
 # `python_registrations_` flat_hash_map concurrent read/write
 
-- **Status:** Fix pending — [pytorch/pytorch#178898](https://github.com/pytorch/pytorch/pull/178898)
+- **Status:** FIXED — [pytorch/pytorch#178898](https://github.com/pytorch/pytorch/pull/178898)
 - **Severity:** SEVERE
 - **Component:** python_dispatch
 - **Source reports:** [utils__part2.md](../utils__part2.md)

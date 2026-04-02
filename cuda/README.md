@@ -32,4 +32,4 @@ per-call locals or use proper synchronization.
 |----------|-----------|-------|
 | Significant | nccl | [`_communicators` static map unprotected concurrent access](nccl-communicators-map-unprotected-concurrent-access.md) |
 | Minor | CUDAPluggableAllocator | [`current_custom_allocator` shared_ptr unsynchronized read/write](current-custom-allocator-shared-ptr-unsynchronized-read-write.md) |
-| Minor | Module | [`cudaMutexGILState` implicit GIL-based deadlock prevention broken](cuda-mutex-gil-state-implicit-locking-broken.md) ⏳ [#178833](https://github.com/pytorch/pytorch/pull/178833) |
+| Minor | Module | [`cudaMutexGILState` implicit GIL-based deadlock prevention broken](cuda-mutex-gil-state-implicit-locking-broken.md) ✅ [#178833](https://github.com/pytorch/pytorch/pull/178833) |
