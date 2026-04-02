@@ -31,7 +31,7 @@ Files audited:
 
 | Severity | Component | Issue | PR |
 |----------|-----------|-------|----|
-| SEVERE | profiler_python | [`PyThreadState_Swap` into running threads during profiler init](pythread-state-swap-into-running-threads.md) | #178551 |
-| SEVERE | profiler_python | [Shared `ValueCache` across threads](shared-valuecache-across-threads.md) | #178552 |
+| SEVERE | profiler_python | [`PyThreadState_Swap` into running threads during profiler init](pythread-state-swap-into-running-threads.md) | [#178551](https://github.com/pytorch/pytorch/pull/178551) |
+| SEVERE | profiler_python | [Shared `ValueCache` across threads](shared-valuecache-across-threads.md) | [#178552](https://github.com/pytorch/pytorch/pull/178552) |
 
 </details>
