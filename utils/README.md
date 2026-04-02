@@ -6,12 +6,20 @@ Issues in `torch/csrc/utils/` affecting free-threaded Python 3.14t.
 
 | Severity | Component | Issue |
 |----------|-----------|-------|
-| SEVERE | python_dispatch | [`python_registrations_` flat_hash_map concurrent read/write](python-registrations-flat-hash-map-concurrent-access.md) ✅ [#178898](https://github.com/pytorch/pytorch/pull/178898) |
-| SEVERE | python_dispatch | [`leaked_python_filenames_` vector concurrent push_back invalidates pointers](leaked-python-filenames-vector-concurrent-access.md) ✅ [#178898](https://github.com/pytorch/pytorch/pull/178898) |
 | SEVERE | tensor_types | [`options_from_string` lazy-init maps with broken guard pattern](options-from-string-lazy-init-maps-broken-guard-pattern.md) ⏳ [#178919](https://github.com/pytorch/pytorch/pull/178919) |
 | Significant | device_lazy_init | [`device_lazy_init` TOCTOU race on `is_initialized` arrays](device-lazy-init-toctou-on-is-initialized.md) ⏳ [#178911](https://github.com/pytorch/pytorch/pull/178911) |
-| Significant | tensor_new | [`static std::string sig` data race in `_validate_sparse_compressed_tensor_args_template`](validate-sparse-compressed-static-string-race.md) ✅ [#178920](https://github.com/pytorch/pytorch/pull/178920) |
 | Minor | device_lazy_init | [`is_in_bad_fork` and `at_fork_registered` non-atomic bool arrays](is-in-bad-fork-at-fork-registered-non-atomic-bool-arrays.md) ⏳ [#178911](https://github.com/pytorch/pytorch/pull/178911) |
+
+<details>
+<summary>Fixed (3 issues)</summary>
+
+| Severity | Component | Issue | PR |
+|----------|-----------|-------|----|
+| SEVERE | python_dispatch | [`python_registrations_` flat_hash_map concurrent read/write](python-registrations-flat-hash-map-concurrent-access.md) | [#178898](https://github.com/pytorch/pytorch/pull/178898) |
+| SEVERE | python_dispatch | [`leaked_python_filenames_` vector concurrent push_back invalidates pointers](leaked-python-filenames-vector-concurrent-access.md) | [#178898](https://github.com/pytorch/pytorch/pull/178898) |
+| Significant | tensor_new | [`static std::string sig` data race in `_validate_sparse_compressed_tensor_args_template`](validate-sparse-compressed-static-string-race.md) | [#178920](https://github.com/pytorch/pytorch/pull/178920) |
+
+</details>
 
 ## Not reported (safe patterns)
 
