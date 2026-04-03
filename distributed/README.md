@@ -21,7 +21,7 @@ these shared components. The deduplicated totals are below.
 
 ## Deduplicated Summary
 
-### SEVERE (8 unique issues -- will crash or corrupt memory)
+### SEVERE (7 open, 1 fixed -- will crash or corrupt memory)
 
 | # | Component | Issue | File |
 |---|-----------|-------|------|
