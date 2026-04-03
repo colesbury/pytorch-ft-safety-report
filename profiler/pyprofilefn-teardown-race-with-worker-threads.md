@@ -1,6 +1,6 @@
 # `pyProfileFn` teardown race: worker callbacks race with `disableProfiler`
 
-- **Status:** Open
+- **Status:** Fix pending — [pytorch/pytorch#179262](https://github.com/pytorch/pytorch/pull/179262)
 - **Severity:** SEVERE
 - **Component:** autograd/profiler_python.cpp, autograd/profiler_kineto.cpp, profiler/collection.cpp
 - **Confirmed by TSAN:** Yes (20 of 20 races in `tsan.log.105601`, 111 in reproduction)
