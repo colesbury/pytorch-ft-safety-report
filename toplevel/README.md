@@ -35,8 +35,6 @@ Notable: `Storage.cpp` has already been updated for free-threading, using
 | SEVERE | python_dimname.cpp | [`InternedStringsTable` concurrent hash map access](interned-strings-table-concurrent-access.md) |
 | SEVERE | DataLoader.cpp | [`worker_pids` static `std::map` concurrent access](worker-pids-static-map-concurrent-access.md) |
 | Significant | Generator.cpp | [`THPGenerator_Wrap` TOCTOU on `pyobj()` / `set_pyobj()`](thpgenerator-wrap-toctou-on-pyobj.md) |
-| Minor | Module.cpp | [`THPModule_addDocStr` static `all_docs` vector concurrent access](add-doc-str-static-vector-concurrent-access.md) |
-| Minor | Module.cpp | [`THPModule_initNames` static `names` vector concurrent access](init-names-static-vector-concurrent-access.md) |
 
 <details>
 <summary>Fixed (1 issue)</summary>
@@ -66,6 +64,9 @@ reporting:
 - **Stream.cpp `context` field**: Per-object (not global) mutable state stored as
   a Python list. Python's per-object locking under free-threading protects
   concurrent list operations.
+
+- **`THPModule_initNames` / `THPModule_addDocStr`** (Module.cpp): Both are only
+  called during module initialization, protected by Python's import lock.
 
 - **Config flag getters/setters** (Module.cpp): Functions like
   `setAllowTF32CuDNN`, `setBenchmarkCuDNN`, etc. delegate to
