@@ -25,13 +25,18 @@ Key Python-facing files include:
 | Severity | File | Issue |
 |---|---|---|
 | Significant | python_cpp_function.cpp, function.h | [functionToPyObject TOCTOU race on Node::pyobj_](function-to-pyobject-pyobj-race.md) |
-| Minor | python_cpp_function.cpp | [cpp_function_types_map/set unprotected concurrent access](cpp-function-types-map-race.md) |
 | Minor | python_function.cpp | [THPFunction_setup_context lazy-init TOCTOU](setup-context-lazy-init.md) |
 
 ## Not Reported (by design)
 
 The following were examined and determined to be safe or not worth reporting
 per the audit guidelines:
+
+- **cpp_function_types_map / cpp_function_types_set** (python_cpp_function.cpp):
+  Write-once-during-init globals. All calls to `registerCppFunction()` occur
+  during module init (from `init.cpp` and generated `python_functions.cpp`),
+  under the import lock. `functionToPyObject()` falls back to
+  `get_default_type()` for unregistered types rather than registering lazily.
 
 - **THPVariableClass, THPFunctionClass, THPGradientEdgeClass, ParameterClass**
   (init.cpp, python_function.cpp): Write-once-during-init globals, set

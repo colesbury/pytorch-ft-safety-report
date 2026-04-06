@@ -1,7 +1,7 @@
 # cpp_function_types_map / cpp_function_types_set unprotected concurrent access
 
-- **Status:** Open
-- **Severity:** Minor
+- **Status:** Not reported (write-once-during-init; see below)
+- **Severity:** ~~Minor~~ None
 - **Component:** python_cpp_function.cpp
 
 ## Shared state
@@ -14,10 +14,11 @@ static std::unordered_set<PyTypeObject*> cpp_function_types_set;
 
 ## Writers
 
-`registerCppFunction()` inserts into both containers. This is called during
-module initialization (e.g., from generated code registering autograd
-function types) and can be called lazily when a new C++ autograd function
-type is first encountered.
+`registerCppFunction()` inserts into both containers. All call sites are in
+`init.cpp` and generated `python_functions.cpp`, both during module
+initialization under the import lock. There is no lazy registration path —
+`functionToPyObject()` falls back to `get_default_type()` for unknown types
+rather than registering them.
 
 ## Readers
 
@@ -42,10 +43,8 @@ pointer after a rehash.
 The same race exists for `cpp_function_types_set` via
 `THPCppFunction_Check()`.
 
-## Suggested fix
+## Resolution
 
-Protect both containers with a `std::mutex`, or switch to a lock-free
-concurrent map. Alternatively, ensure all `registerCppFunction()` calls
-happen during module init under the import lock, and document/enforce this
-invariant. If registration is truly init-only, an `std::call_once` or
-similar pattern that freezes the containers after init would suffice.
+No fix needed. All `registerCppFunction()` calls happen during module init
+under the import lock. The containers are read-only after init completes.
+This is a write-once-during-init pattern, which is safe per audit guidelines.
