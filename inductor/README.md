@@ -5,17 +5,14 @@ Issues in `torch/csrc/inductor/` affecting free-threaded Python 3.14t.
 ## Architecture Summary
 
 The inductor C++ runtime provides ahead-of-time (AOT) compiled model execution
-infrastructure. Most of this code is pure C++ with its own locking (or lack
-thereof). The GIL removal doesn't create new race conditions per se, but it
-makes them far more likely to trigger: Python threads now run truly
-concurrently, so the window for concurrent calls into these C++ APIs is wide
-open.
+infrastructure.
 
 Key subsystems:
 
 - **AOTI Runtime** (`aoti_runtime/`): `AOTInductorModelContainer` manages a pool
-  of `AOTInductorModel` instances with double-buffered constants. Has partial
-  locking via `model_exec_mutex_` (shared_mutex), but management APIs bypass it.
+  of `AOTInductorModel` instances with double-buffered constants. Has
+  `model_exec_mutex_` (shared_mutex) for `run()` vs `swap_constant_buffer()`
+  exclusion, but management APIs have no internal locking — they rely on the GIL.
 
 - **AOTI Eager** (`aoti_eager/`): `AOTIPythonKernelHolder` is a dispatcher
   kernel functor — one instance per (op, dispatch key) pair, shared across all
@@ -29,6 +26,27 @@ Key subsystems:
 
 - **Static Launcher / cpp_prefix** (`static_launcher/`, `cpp_prefix.h`):
   Code included in all generated kernels, plus CUDA/XPU kernel launch helpers.
+
+### GIL dependence in the model container
+
+All pybind methods in `aoti_runner/pybind.cpp` and `aoti_package/pybind.cpp`
+are exposed **without** `py::call_guard<py::gil_scoped_release>()`, so the GIL
+is held for the entire C++ call — including `run()`, `update_constant_buffer()`,
+`swap_constant_buffer()`, `extract_constants_map()`, and
+`free_inactive_constant_buffer()`.
+
+Under GIL Python, this serializes all calls from Python. The management APIs
+have no internal locks because they rely on this implicit serialization. Even
+`run()` is fully GIL-serialized from Python — the `model_exec_mutex_` inside
+the container is only meaningful for the non-Python C API path (compiled `.so`
+calling back into the container directly).
+
+Under free-threading, the GIL no longer serializes Python threads, so all the
+management API races become live. Additionally, `run()` holding the GIL makes
+Python-side inference single-threaded today — adding
+`py::call_guard<py::gil_scoped_release>()` to `run()` (needed for concurrent
+inference) would immediately expose the management API races even under GIL
+Python.
 
 ## Issues
 
