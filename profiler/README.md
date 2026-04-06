@@ -14,7 +14,6 @@ Files audited:
 
 | Severity | Component | Issue |
 |----------|-----------|-------|
-| SEVERE | profiler_python, profiler_kineto, collection | [`pyProfileFn` teardown race: worker callbacks race with `disableProfiler`](pyprofilefn-teardown-race-with-worker-threads.md) ⏳ [#179262](https://github.com/pytorch/pytorch/pull/179262) |
 | SEVERE | profiler_kineto | [`profiler_state_info_ptr` (shared_ptr) data race across threads](profiler-state-info-ptr-shared-ptr-data-race.md) |
 | SEVERE | profiler_python | [GC callback use-after-free of `PythonTracer` instance](gc-callback-use-after-free-of-pythontracer.md) |
 | Significant | profiler_kineto | [`toggleTorchOpCollectionDynamic` dereferences `profiler_state_info_ptr` wit](toggle-torch-op-collection-dynamic-null-deref.md) |
@@ -27,10 +26,11 @@ Files audited:
 | Minor | combined_traceback | [`PyList_GetItem` borrowed reference in `gatherForwardTraceback`](pylist-getitem-borrowed-ref-in-gather-forward-traceback.md) |
 
 <details>
-<summary>Fixed (2 issues)</summary>
+<summary>Fixed (3 issues)</summary>
 
 | Severity | Component | Issue | PR |
 |----------|-----------|-------|----|
+| SEVERE | profiler_python, profiler_kineto, collection | [`pyProfileFn` teardown race: worker callbacks race with `disableProfiler`](pyprofilefn-teardown-race-with-worker-threads.md) | [#179262](https://github.com/pytorch/pytorch/pull/179262) |
 | SEVERE | profiler_python | [`PyThreadState_Swap` into running threads during profiler init](pythread-state-swap-into-running-threads.md) | [#178551](https://github.com/pytorch/pytorch/pull/178551) |
 | SEVERE | profiler_python | [Shared `ValueCache` across threads](shared-valuecache-across-threads.md) | [#178552](https://github.com/pytorch/pytorch/pull/178552) |
 
