@@ -17,12 +17,12 @@ Dynamo uses a tiered concurrency model (see [dynamo/](dynamo/)):
 |-----------|--------|---------|
 | [**dynamo**](dynamo/) | 8 SEVERE, 14 Significant, 10 Minor | Dict watcher races, ExtraState, compiled autograd; 3 fixed |
 | [**profiler**](profiler/) | 3 SEVERE, 4 Significant, 4 Minor | pyProfileFn teardown race (TSAN-confirmed), profiler_kineto shared_ptr, GC callback UAF; 2 SEVERE already fixed |
-| [**autograd**](autograd/) | 1 Significant, 2 Minor | functionToPyObject TOCTOU, lazy-init patterns |
-| [**toplevel**](toplevel/) | 2 SEVERE, 1 Significant, 2 Minor | DataLoader worker_pids, InternedStringsTable; 1 fixed |
+| [**autograd**](autograd/) | 1 Significant | functionToPyObject TOCTOU; 1 fixed |
+| [**toplevel**](toplevel/) | 2 SEVERE, 1 Significant | DataLoader worker_pids, InternedStringsTable; 1 fixed |
 | [**utils**](utils/) | 1 SEVERE | options_from_string; 5 fixed |
 | [**cuda**](cuda/) | 1 Significant, 1 Minor | nccl communicators, CUDAPluggableAllocator shared_ptr; 1 fixed |
 | [**distributed**](distributed/) | 7 SEVERE, 14 Significant, 18 Minor | groupRanks static race, SymmetricMemory missing mutex, PythonRpcHandler UAF, RRef dangling `this`; 1 fixed |
-| [**inductor**](inductor/) | 8 SEVERE, 6 Significant, 6 Minor | aoti_kernel_cache_ zero synchronization, model_container partial locking, load_json_file static, runner registry |
+| [**inductor**](inductor/) | 5 SEVERE, 5 Significant, 6 Minor | aoti_kernel_cache_ zero synchronization, model_container partial locking, load_json_file static, runner registry |
 
 ## Broad audit only (lower quality, not deep-audited)
 

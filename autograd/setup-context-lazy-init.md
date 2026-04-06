@@ -1,6 +1,6 @@
 # THPFunction_setup_context lazy-init TOCTOU
 
-- **Status:** Open
+- **Status:** Fixed ([#179475](https://github.com/pytorch/pytorch/pull/179475))
 - **Severity:** Minor
 - **Component:** python_function.cpp
 
