@@ -23,6 +23,7 @@ Dynamo uses a tiered concurrency model (see [dynamo/](dynamo/)):
 | [**cuda**](cuda/) | 1 Significant, 1 Minor | nccl communicators, CUDAPluggableAllocator shared_ptr; 1 fixed |
 | [**distributed**](distributed/) | 7 SEVERE, 14 Significant, 18 Minor | groupRanks static race, SymmetricMemory missing mutex, PythonRpcHandler UAF, RRef dangling `this`; 1 fixed |
 | [**inductor**](inductor/) | 5 SEVERE, 5 Significant, 6 Minor | aoti_kernel_cache_ zero synchronization, model_container partial locking, load_json_file static, runner registry |
+| [**fx**](fx/) | 1 Minor | Lazy-init static PyObject* TOCTOU |
 
 ## Broad audit only (lower quality, not deep-audited)
 
@@ -30,7 +31,6 @@ Dynamo uses a tiered concurrency model (see [dynamo/](dynamo/)):
 |-----------|--------|---------|
 | [jit](jit/) | 8 medium | Mostly pure C++ graph transforms |
 | [jit_mobile](jit_mobile/) | 4 medium | Mostly pure C++ |
-| [fx](fx/) | 1 high, 2 medium | Lazy-init PyObject* |
 | [export](export/) | 1 medium | upgrader_registry |
 | [tensor](tensor/) | 1 medium | default_backend |
 
