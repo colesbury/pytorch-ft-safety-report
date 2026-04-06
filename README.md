@@ -22,6 +22,7 @@ Dynamo uses a tiered concurrency model (see [dynamo/](dynamo/)):
 | [**utils**](utils/) | 1 SEVERE | options_from_string; 5 fixed |
 | [**cuda**](cuda/) | 1 Significant, 1 Minor | nccl communicators, CUDAPluggableAllocator shared_ptr; 1 fixed |
 | [**distributed**](distributed/) | 7 SEVERE, 14 Significant, 18 Minor | groupRanks static race, SymmetricMemory missing mutex, PythonRpcHandler UAF, RRef dangling `this`; 1 fixed |
+| [**inductor**](inductor.md) | 8 SEVERE, 6 Significant, 6 Minor | aoti_kernel_cache_ zero synchronization, model_container partial locking, load_json_file static, runner registry |
 
 ## Broad audit only (lower quality, not deep-audited)
 
@@ -35,4 +36,4 @@ Dynamo uses a tiered concurrency model (see [dynamo/](dynamo/)):
 
 ## No issues found
 
-`api/` (C++ frontend), `cpu/`, `functionalization/`, `functorch/`, `inductor/` (low Python coupling), `instruction_counter/`, `lazy/` (already mutex-protected), `monitor/`, `mps/`, `mtia/`, `multiprocessing/`, `onnx/`, `stable/`.
+`api/` (C++ frontend), `cpu/`, `functionalization/`, `functorch/`, `instruction_counter/`, `lazy/` (already mutex-protected), `monitor/`, `mps/`, `mtia/`, `multiprocessing/`, `onnx/`, `stable/`.
