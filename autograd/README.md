@@ -59,17 +59,18 @@ per the audit guidelines:
   after registration is complete.
 
 - **python_hook.cpp**: Already uses `Py_BEGIN_CRITICAL_SECTION` for dict
-  iteration in `compiled_args()`. The hook operator() methods acquire GIL.
+  iteration in `compiled_args()`. The hook `operator()` methods attach a
+  thread state (via `PyGILState_Ensure`) before calling Python C APIs.
 
 - **python_engine.cpp**: The `_reinitialize_engine` flag is only relevant
   in fork scenarios (set in `pthread_atfork` child handler before threads
   exist). The engine itself uses mutex-based synchronization.
 
-- **python_anomaly_mode.cpp**: All methods acquire GIL before accessing
-  Python objects. No shared mutable C++ state.
+- **python_anomaly_mode.cpp**: All methods attach a thread state before
+  accessing Python objects. No shared mutable C++ state.
 
-- **python_saved_variable_hooks.cpp**: All methods acquire GIL. No shared
-  mutable C++ state.
+- **python_saved_variable_hooks.cpp**: All methods attach a thread state
+  before calling Python C APIs. No shared mutable C++ state.
 
 - **python_torch_functions_manual.cpp**: `THPVariableFunctionsModule` is a
   write-once global set during init.

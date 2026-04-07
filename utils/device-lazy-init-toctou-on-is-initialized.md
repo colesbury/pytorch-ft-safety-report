@@ -26,8 +26,7 @@
   calls `device_lazy_init(CUDA)` and also reads `false`. Both threads
   proceed to call `torch.cuda._lazy_init()`, causing double
   initialization. The `pybind11::gil_scoped_acquire` on line 28 does
-  not provide mutual exclusion under free-threading -- the GIL is a
-  no-op.
+  not provide mutual exclusion under free-threading.
   Additionally, `set_requires_device_init` (called from Python or
   from the atfork handler) writes to `is_initialized[i]` without
   acquiring any lock, racing with readers in `is_device_initialized`.

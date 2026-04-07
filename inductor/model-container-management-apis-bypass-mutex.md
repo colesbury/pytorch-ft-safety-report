@@ -8,10 +8,10 @@
 synchronize `run()` (shared mode) with `swap_constant_buffer()` (unique mode).
 However, `update_constant_buffer()`, `extract_constants_map()`, and
 `free_inactive_constant_buffer()` operate on the same shared mutable state
-**without holding any lock**. From Python, these are currently serialized by the
-GIL — all pybind methods in `aoti_runner/pybind.cpp` are exposed without
-`py::call_guard<py::gil_scoped_release>()`. Under free-threading, this implicit
-serialization disappears.
+**without holding any lock**. From Python under GIL-enabled builds, these are
+implicitly serialized because pybind methods in `aoti_runner/pybind.cpp` are
+exposed without `py::call_guard<py::gil_scoped_release>()`. Under
+free-threading, this implicit serialization disappears.
 
 ## `update_constant_buffer` races with `run()`
 

@@ -13,7 +13,7 @@
   directly, or sets it to `nullptr`. No reference count increment is performed.
 - **Reader(s):** `VerboseLogger::maybe_create()` (line 398) reads the pointer.
   `PythonLogger::log()` (line 370) dereferences it. Both run inside the
-  compiled backward path under the mutex and GIL.
+  compiled backward path under the mutex.
 - **Race scenario 1 (free-threading):** Thread A is inside a compiled backward,
   has captured `python_verbose_logger` into a `VerboseLogger` instance (line
   402). Thread B calls `set_verbose_logger(None)` which sets
@@ -27,4 +27,4 @@
   issue per se, but free-threading makes it much more likely to manifest.
 - **Suggested fix:** `Py_XINCREF` the logger in `set_verbose_logger` and
   `Py_XDECREF` the old one. Use `THPObjectPtr` for the global. Protect reads
-  with the mutex or GIL.
+  with the mutex.

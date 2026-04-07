@@ -23,5 +23,4 @@
   567-568) while Thread B calls `is_cache_empty`, the read of `compiled_fn`
   races with the write. This is a data race on the `THPObjectPtr` internals.
 - **Suggested fix:** `is_cache_empty` should acquire the compiled autograd
-  mutex (or at minimum the GIL, since `THPObjectPtr` is ultimately a
-  `PyObject*`).
+  mutex.

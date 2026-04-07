@@ -21,10 +21,9 @@
   `compiled_autograd()` (lines 1238-1246) uses `cache->runtime_wrapper` and
   `cache->compiled_fn` after `_compiled_autograd_impl` returns.
 - **Race scenario:** Thread A is inside `compiled_autograd()` holding the
-  mutex and GIL, has traversed several cache nodes, and holds a raw pointer
+  mutex, has traversed several cache nodes, and holds a raw pointer
   `cache` to a non-root `CacheNode`. Thread B calls `clear_cache()` from
-  Python. Because `clear_cache` is `METH_NOARGS` on a `Py_MOD_GIL_NOT_USED`
-  module, Thread B enters without acquiring the GIL or the compiled autograd
+  Python concurrently. `clear_cache` does not acquire the compiled autograd
   mutex. `CacheNode::root()->clear()` destroys all children via
   `next.clear()`, which invokes `unique_ptr<CacheNode>` destructors. Thread
   A's `cache` pointer is now dangling. Thread A proceeds to dereference it --

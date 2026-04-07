@@ -7,8 +7,7 @@ Issues in `torch/csrc/cuda/` affecting free-threaded Python 3.14t.
 The `torch/csrc/cuda/` directory contains the Python-facing CUDA module bindings,
 the pluggable allocator infrastructure, memory snapshot tooling, and the legacy
 NCCL wrapper (`torch.cuda.nccl`). Most of these files are thin wrappers around
-C10 CUDA APIs and are called from Python with standard GIL semantics (or explicit
-`gil_scoped_release`). The main concurrency concerns are:
+C10 CUDA APIs and are called from Python. The main concurrency concerns are:
 
 1. **CUDAPluggableAllocator**: A global `shared_ptr` (`current_custom_allocator`)
    is read by the deleter function on any thread that deallocates a CUDA tensor,

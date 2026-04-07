@@ -16,8 +16,7 @@
   calls `bind_function` which calls into Python. If another thread is blocked
   on the same static initialization guard while Python code tries to re-enter
   this initialization path, a deadlock could occur. The
-  `PyUnicode_InternFromString` calls are safe as they are idempotent, but
-  they assume the GIL is held (which it is under current usage since
-  `compiled_autograd()` acquires it).
+  `PyUnicode_InternFromString` calls are safe as they are idempotent and
+  internally thread-safe in 3.14t.
 - **Suggested fix:** Move one-time initialization to module init, or to a
   `std::call_once` with the compiled autograd mutex held.
