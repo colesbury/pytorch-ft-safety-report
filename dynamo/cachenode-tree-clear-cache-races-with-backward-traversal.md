@@ -1,13 +1,13 @@
 # `CacheNode` tree: `clear_cache` races with backward traversal
 
 - **Status:** Open
-- **Severity:** SEVERE
+- **Severity:** Minor
 - **Tier:** Tier 1
 - **Component:** compiled_autograd
 - **Source report:** [dynamo_compiled_autograd_v2.md](../dynamo_compiled_autograd_v2.md)
 
-- **Tier:** Tier 1 (can be triggered from any thread, e.g. a data loader
-  thread calling into Python code that clears the cache)
+- **Tier:** Tier 1 (technically reachable from any thread, but `clear_cache`
+  / `reset` is primarily used in testing)
 - **Shared state:** The entire `CacheNode` tree rooted at
   `CacheNode::root()`.
 - **Writer(s):** `clear_cache()` (line 637) calls

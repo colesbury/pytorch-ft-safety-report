@@ -6,11 +6,11 @@ Issues in `torch/csrc/dynamo/` affecting free-threaded Python 3.14t.
 
 | Severity | Component | Issue |
 |----------|-----------|-------|
-| SEVERE | compiled_autograd | [`CacheNode` tree: `clear_cache` races with backward traversal](cachenode-tree-clear-cache-races-with-backward-traversal.md) |
 | SEVERE | compiled_autograd | [`python_verbose_logger` borrowed reference: use-after-free](python-verbose-logger-borrowed-reference-use-after-free.md) |
 | SEVERE | compiled_autograd | [`the_autograd_compiler` pointer: unsynchronized read vs. write](the-autograd-compiler-pointer-unsynchronized-read-vs-write.md) |
 | SEVERE | eval_frame | [Concurrent access to `cache_entry_list` (std::list) during lookup, ins](concurrent-access-to-cache-entry-list-std-list-during-lookup-insertion-invalidat.md) |
 | Significant | guards | [`dict_recursive_tag_watch_callback` races with guard eval on per-Guard](dict-recursive-tag-watch-callback-calls-disable-recursive-dict-tag-optimization-.md) |
+| Minor | compiled_autograd | [`CacheNode` tree: `clear_cache` races with backward traversal](cachenode-tree-clear-cache-races-with-backward-traversal.md) |
 | Minor | compiled_autograd | [`default_dyn_type_int` non-atomic int](default-dyn-type-int-non-atomic-int.md) |
 | Minor | guards | [`disable_dict_tag_matching_callback` PyCapsule name data race](disable-dict-tag-matching-callback-weakref-callback-dereferences-guardmanager-co.md) |
 
