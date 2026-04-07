@@ -1,7 +1,7 @@
 # `default_dyn_type_int` non-atomic int
 
 - **Status:** Open
-- **Severity:** Significant
+- **Severity:** Minor
 - **Tier:** Tier 1
 - **Component:** compiled_autograd
 - **Source report:** [dynamo_compiled_autograd_v2.md](../dynamo_compiled_autograd_v2.md)

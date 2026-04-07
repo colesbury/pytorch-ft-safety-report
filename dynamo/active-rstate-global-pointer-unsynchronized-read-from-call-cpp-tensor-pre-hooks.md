@@ -1,7 +1,7 @@
 # `active_rstate` global pointer: unsynchronized read from `call_cpp_tensor_pre_hooks`
 
 - **Status:** Open
-- **Severity:** SEVERE
+- **Severity:** Significant
 - **Tier:** Tier 2
 - **Component:** compiled_autograd
 - **Source report:** [dynamo_compiled_autograd_v2.md](../dynamo_compiled_autograd_v2.md)
