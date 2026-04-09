@@ -1,6 +1,6 @@
 # functionToPyObject TOCTOU race on Node::pyobj_
 
-- **Status:** Open
+- **Status:** Fixed ([#179767](https://github.com/pytorch/pytorch/pull/179767))
 - **Severity:** Significant
 - **Component:** python_cpp_function.cpp, function.h
 

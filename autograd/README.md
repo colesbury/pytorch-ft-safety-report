@@ -22,15 +22,14 @@ Key Python-facing files include:
 
 ## Issues
 
-| Severity | File | Issue |
-|---|---|---|
-| Significant | python_cpp_function.cpp, function.h | [functionToPyObject TOCTOU race on Node::pyobj_](function-to-pyobject-pyobj-race.md) |
+No open issues.
 
 <details>
-<summary>Fixed (1 issue)</summary>
+<summary>Fixed (2 issues)</summary>
 
 | Severity | File | Issue | PR |
 |---|---|---|---|
+| Significant | python_cpp_function.cpp, function.h | [functionToPyObject TOCTOU race on Node::pyobj_](function-to-pyobject-pyobj-race.md) | [#179767](https://github.com/pytorch/pytorch/pull/179767) |
 | Minor | python_function.cpp | [THPFunction_setup_context lazy-init TOCTOU](setup-context-lazy-init.md) | [#179475](https://github.com/pytorch/pytorch/pull/179475) |
 
 </details>
